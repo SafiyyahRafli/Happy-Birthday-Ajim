@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Sayang sayaaaa ❤️</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #DFFADE;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', 'Poppins', system-ui, sans-serif;
+            padding: 16px;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            perspective: 1200px;
+        }
+
+        .card-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 48px;
+            box-shadow: 0 25px 45px -10px rgba(46, 94, 44, 0.3),
+                        0 0 0 2px rgba(255, 255, 255, 0.6) inset;
+            padding: 2rem 2rem 2.5rem;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            text-align: center;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.5s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(20px) scale(0.96); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        h1, h2, p {
+            color: #082607;
+            font-weight: 500;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #1c4b1a, #0a3508);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.25rem;
+        }
+
+        .greeting {
+            font-size: 2.2rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-shadow: 0 2px 10px rgba(98, 143, 96, 0.3);
+            color: #0f3a0d;
+        }
+
+        .name-input-area {
+            margin: 30px 0 20px;
+        }
+
+        input {
+            background: rgba(245, 255, 240, 0.9);
+            border: 2px solid #9fcb9d;
+            border-radius: 100px;
+            padding: 16px 24px;
+            font-size: 1.2rem;
+            width: 100%;
+            outline: none;
+            color: #082607;
+            font-weight: 500;
+            text-align: center;
+            transition: 0.2s;
+            box-shadow: 0 4px 12px rgba(70, 120, 70, 0.15);
+        }
+
+        input:focus {
+            border-color: #3f8a3c;
+            box-shadow: 0 8px 20px rgba(46, 94, 44, 0.25);
+            background: #f5fff0;
+        }
+
+        input::placeholder {
+            color: #6f9e6d;
+            font-weight: 400;
+        }
+
+        .btn {
+            background: #9fcca5;
+            border: none;
+            border-radius: 60px;
+            padding: 14px 32px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #082607;
+            letter-spacing: 0.5px;
+            box-shadow: 0 10px 20px -5px #82aa82, 0 4px 0 0 #3b6e3b;
+            cursor: pointer;
+            transition: 0.1s ease;
+            margin: 12px 8px;
+            border: 1px solid #d4f0d2;
+            min-width: 120px;
+        }
+
+        .btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 6px 12px -5px #6f9a6f, 0 1px 0 0 #2d5a2d;
+        }
+
+        .btn-small {
+            font-size: 1.1rem;
+            padding: 12px 24px;
+            min-width: 100px;
+        }
+
+        .envelope-pic {
+            font-size: 8rem;
+            line-height: 1.2;
+            filter: drop-shadow(8px 12px 15px rgba(46, 82, 44, 0.3));
+            margin: 20px 0 5px;
+        }
+
+        .open-question {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1b4e19;
+            margin: 0 0 10px;
+        }
+
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 25px 0 10px;
+        }
+
+        .message-hint {
+            color: #2b6129;
+            font-size: 1rem;
+            margin-top: 20px;
+            font-style: italic;
+            background: rgba(200, 230, 190, 0.6);
+            padding: 8px 18px;
+            border-radius: 40px;
+            display: inline-block;
+        }
+
+        .secret-note {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 30px 0 20px;
+            color: #0a3809;
+            background: rgba(220, 245, 210, 0.8);
+            padding: 25px;
+            border-radius: 50px;
+            line-height: 1.6;
+            border: 2px solid #b1d8ae;
+        }
+
+        /* Meme card specific styles */
+        .meme-image {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 40px;
+            margin: 20px auto 15px;
+            display: block;
+            box-shadow: 0 15px 30px rgba(46, 82, 44, 0.25);
+            border: 3px solid white;
+        }
+
+        .meme-message {
+            font-size: 1.3rem;
+            color: #1b4e19;
+            margin: 10px 0 15px;
+            font-weight: 500;
+            white-space: pre-line;
+            line-height: 1.6;
+        }
+
+        .meme-counter {
+            color: #2d5a2d;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            opacity: 0.8;
+        }
+
+        .heart-btn {
+            background: #ffb3c6;
+            box-shadow: 0 8px 15px -3px #ff99aa, 0 3px 0 0 #b34f63;
+            font-size: 2rem;
+            padding: 10px 30px;
+            color: #5e2a36;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="appContainer">
+        <!-- CARD 0 : name input -->
+        <div id="step0" class="card-panel fade-in">
+            <div class="greeting">💌 Knock Knock 💌</div>
+            <h2>who's there?</h2>
+            <div class="name-input-area">
+                <input type="text" id="nameInput" placeholder="type your name..." autofocus>
+            </div>
+            <button class="btn" id="enterBtn">open birthday card →</button>
+            <div class="message-hint">(hint: it's you, baby)</div>
+        </div>
+
+        <!-- CARD 1 : first birthday card -->
+        <div id="step1" class="card-panel hidden">
+            <div class="greeting">♡♡♡</div>
+            <p style="font-size: 2.2rem; margin: 10px 0; font-weight: 600; color: #1b5719;">Happyy Birthdayy Baby!!</p>
+            <p style="font-size: 2.6rem; line-height: 1.2; font-weight: 700; background: linear-gradient(145deg, #266d22, #0a4e07); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem;">Sayangku Babyku Cinta Hatikuuu!</p>
+            <p style="font-size: 1.5rem; color: #1f621d; margin: 20px 0 30px;">Tekan button ni sebab ada lagii</p>
+            <button class="btn" id="nextBtn1">Next →</button>
+        </div>
+
+        <!-- MEME CARD 1 -->
+        <div id="meme1" class="card-panel hidden">
+            <img class="meme-image" src="https://www.shutterstock.com/image-illustration/cute-meme-cat-hearts-600nw-2469602615.jpg" alt="Cute meme 1">
+            <div class="meme-message" id="memeText1">HAPPY BIRTHDAYY BABYY CEMBOYY! (๑ᵔ⤙ᵔ๑)<br>makin tambah umur makin handsomee hihi eee geram 😍</div>
+            <button class="btn heart-btn" id="memeNext1">🤍</button>
+            <div class="meme-counter">1/5</div>
+        </div>
+
+        <!-- MEME CARD 2 -->
+        <div id="meme2" class="card-panel hidden">
+            <img class="meme-image" src="https://st.depositphotos.com/18053112/54361/v/450/depositphotos_543616442-stock-illustration-cute-personage-pink-cheeks-cutely.jpg" alt="Cute meme 2">
+            <div class="meme-message" id="memeText2">baby dah buat yang terbaik dan berusaha lebih baik setiap tahun. saya bangga dengan awakk. </div>
+            <button class="btn heart-btn" id="memeNext2">🤍</button>
+            <div class="meme-counter">2/5</div>
+        </div>
+
+        <!-- MEME CARD 3 -->
+        <div id="meme3" class="card-panel hidden">
+            <img class="meme-image" src="https://static.vecteezy.com/ti/gratis-vektor/p1/8049750-sprechblase-charakter-cartoon-mit-kussender-geste-vektor.jpg" alt="Cute meme 3">
+            <div class="meme-message" id="memeText3">sayangku keren cekaliee dan kuat sebab dah lalui banyak benda sampai harini.<br>semoga tahun ni dan seterusnya lebih baik untuk kamuu</div>
+            <button class="btn heart-btn" id="memeNext3">🤍</button>
+            <div class="meme-counter">3/5</div>
+        </div>
+
+        <!-- MEME CARD 4 -->
+        <div id="meme4" class="card-panel hidden">
+            <img class="meme-image" src="https://gimgs2.nohat.cc/thumb/f/350/kawaii-tumblr-png-soft-cute-memes-reaction-free-png-images--comdlpng6940935.jpg" alt="Cute meme 4">
+            <div class="meme-message" id="memeText4">terima kasih sebab selalu cuba jadi yang terbaik untuk saya. <3</div>
+            <button class="btn heart-btn" id="memeNext4">🤍</button>
+            <div class="meme-counter">4/5</div>
+        </div>
+
+        <!-- MEME CARD 5 -->
+        <div id="meme5" class="card-panel hidden">
+            <img class="meme-image" src="https://static.vecteezy.com/system/resources/previews/044/885/611/non_2x/cute-happy-cat-meme-sticker-tshirt-illustration-free-png.png" alt="Cute meme 5">
+            <div class="meme-message" id="memeText5">selamat hari lahir ajim<br>apa pun yang jadi aku harap kau tahu yang aku sentiasa sayang kau dan aku bersyukur ada kau dalam hidup aku :) <3</div>
+            <button class="btn heart-btn" id="memeNext5">🤍</button>
+            <div class="meme-counter">5/5</div>
+        </div>
+
+        <!-- CARD 2 : envelope card with yes/no -->
+        <div id="step2" class="card-panel hidden">
+            <div class="envelope-pic">
+                <span>💌</span>
+            </div>
+            <div class="open-question">nak baca tak?</div>
+            <div class="button-group">
+                <button class="btn btn-small" id="yesBtn">mestilah nak en</button>
+                <button class="btn btn-small" id="noBtn">berani kau taknak baca</button>
+            </div>
+            <div id="secretMessage" class="hidden" style="margin-top: 30px;">
+                <div class="secret-note">its your special day! your birthday, the day ajim turn 22 is todayy werrkkk dah makin tuaa. terima kasih ibu sebab dah lahirkan ajim hihih kalau tak sape la yang nak menemani aku dan menghiburkan aku dari sem 1 kan<br>semoga hari ii kamu lebih baik, panjang umur dan sihat selaluuu tau baru lah boleh kahwin sama samaa, travel sama sama, ADA LITTLE AJIM dan bahagia selamanya hihih.<br>semoga apa yang kau nak, cari dan yang kau harapkan akan tercapai satu per satu.</div>
+                <p style="font-size: 1.8rem; margin-top: 5px; color: #1a6118;">happy 22 years old baby ♡´･ᴗ･`♡</p>
+                <p style="font-size: 1.2rem; margin-top: 15px; color: #2d752b;">⋆｡°✩ always yours ✩°｡⋆</p>
+            </div>
+            <div id="noMessage" class="hidden" style="margin-top: 30px;">
+                <p style="font-size: 2rem; color: #1f621d;">😢 oooo sampai hati kau...</p>
+                <p style="font-size: 1.2rem; color: #2f6e2c;">betul ni taknak baca?</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const allowedNames = ["ajim", "azim", "mirza", "mija", "azim mirza", "ajim mija"];
+
+            function normalizeName(raw) {
+                return raw.trim().replace(/\s+/g, ' ').toLowerCase();
+            }
+
+            function isNameAllowed(input) {
+                return allowedNames.includes(normalizeName(input));
+            }
+
+            // Get DOM elements
+            const step0 = document.getElementById('step0');
+            const step1 = document.getElementById('step1');
+            const step2 = document.getElementById('step2');
+            const meme1 = document.getElementById('meme1');
+            const meme2 = document.getElementById('meme2');
+            const meme3 = document.getElementById('meme3');
+            const meme4 = document.getElementById('meme4');
+            const meme5 = document.getElementById('meme5');
+
+            const nameInput = document.getElementById('nameInput');
+            const enterBtn = document.getElementById('enterBtn');
+            const nextBtn1 = document.getElementById('nextBtn1');
+            
+            const memeNext1 = document.getElementById('memeNext1');
+            const memeNext2 = document.getElementById('memeNext2');
+            const memeNext3 = document.getElementById('memeNext3');
+            const memeNext4 = document.getElementById('memeNext4');
+            const memeNext5 = document.getElementById('memeNext5');
+
+            const yesBtn = document.getElementById('yesBtn');
+            const noBtn = document.getElementById('noBtn');
+            const secretMessageDiv = document.getElementById('secretMessage');
+            const noMessageDiv = document.getElementById('noMessage');
+
+            // All steps in order
+            const steps = [step0, step1, meme1, meme2, meme3, meme4, meme5, step2];
+
+            function showStep(stepToShow) {
+                steps.forEach(step => {
+                    step.classList.add('hidden');
+                    step.classList.remove('fade-in');
+                });
+                
+                stepToShow.classList.remove('hidden');
+                void stepToShow.offsetWidth;
+                stepToShow.classList.add('fade-in');
+
+                // Reset messages when showing step2
+                if (stepToShow === step2) {
+                    secretMessageDiv.classList.add('hidden');
+                    noMessageDiv.classList.add('hidden');
+                }
+            }
+
+            // Initial state
+            showStep(step0);
+            nameInput.value = '';
+
+            // Name validation
+            enterBtn.addEventListener('click', function() {
+                const rawName = nameInput.value;
+                if (!rawName) {
+                    alert("please type your name, baby ❤️");
+                    return;
+                }
+
+                if (isNameAllowed(rawName)) {
+                    showStep(step1);
+                } else {
+                    alert("hmm... only my special person can enter 🤍");
+                    nameInput.value = '';
+                    nameInput.focus();
+                }
+            });
+
+            nameInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    enterBtn.click();
+                }
+            });
+
+            // Navigation through cards
+            nextBtn1.addEventListener('click', () => showStep(meme1));
+            memeNext1.addEventListener('click', () => showStep(meme2));
+            memeNext2.addEventListener('click', () => showStep(meme3));
+            memeNext3.addEventListener('click', () => showStep(meme4));
+            memeNext4.addEventListener('click', () => showStep(meme5));
+            memeNext5.addEventListener('click', () => showStep(step2));
+
+            // Yes/No buttons
+            yesBtn.addEventListener('click', function() {
+                noMessageDiv.classList.add('hidden');
+                secretMessageDiv.classList.remove('hidden');
+            });
+
+            noBtn.addEventListener('click', function() {
+                secretMessageDiv.classList.add('hidden');
+                noMessageDiv.classList.remove('hidden');
+            });
+        })();
+    </script>
+</body>
+</html>
